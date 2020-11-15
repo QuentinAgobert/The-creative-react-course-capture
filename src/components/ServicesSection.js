@@ -8,13 +8,19 @@ import teamwork from '../img/teamwork.svg';
 // Styles
 import styled from 'styled-components';
 import { About, Description, Image } from '../styles';
+// TEST
+import { useInView } from 'react-intersection-observer';
+import { useAnimation } from 'framer-motion';
+import { scrollReveal } from '../animation';
+import { useScroll } from './useScroll';
 
 const ServicesSection = () => {
+    const [element,controls] = useScroll();
     return (
-        <Services>
+        <Services variants={scrollReveal} animate={controls} initial="hidden" ref={element}>
             <Description>
                 <h2>High <span>quality</span> services</h2>
-                <Cards>
+                <Cards> 
                     <Card>
                         <div className="icon">
                             <img src={clock} alt="clock"/>

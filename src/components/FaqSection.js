@@ -4,10 +4,13 @@ import Toggle from './Toggle';
 import styled from 'styled-components';
 import { About } from '../styles';
 import { AnimateSharedLayout } from 'framer-motion';
+import { useScroll } from './useScroll';
+import { scrollReveal } from '../animation';
 
 const FaqSection = () => {
+    const [element,controls] = useScroll();
     return (
-        <Faq>
+        <Faq variants={scrollReveal} ref={element} animate={controls} initial="hidden">
             <h2>Any questions? <span>FAQ</span></h2>
             <AnimateSharedLayout>
                 <Toggle title="How Do I Start?">
@@ -15,28 +18,24 @@ const FaqSection = () => {
                         <p>Lorem ipsum dolor sit amet.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nobis!</p>
                     </div>
-                    <div className="faq-line"></div>
                 </Toggle>
                 <Toggle title="Daily Schedule">
                     <div className="answer">
                         <p>Lorem ipsum dolor sit amet.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nobis!</p>
                     </div>
-                    <div className="faq-line"></div>
                 </Toggle>
                 <Toggle title="Different Payment Methods">
                     <div className="answer">
                         <p>Lorem ipsum dolor sit amet.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nobis!</p>
                     </div>
-                    <div className="faq-line"></div>
                 </Toggle>
                 <Toggle title="What Products Do You Offer ?">
                     <div className="answer">
                         <p>Lorem ipsum dolor sit amet.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nobis!</p>
                     </div>
-                    <div className="faq-line"></div>
                 </Toggle>
             </AnimateSharedLayout>
         </Faq>
